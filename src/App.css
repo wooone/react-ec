@@ -39,6 +39,7 @@ p {
 p {
   color: var(--small-text-color);
   font-size: 1rem;
+  line-height: 1;
 }
 
 h1,
@@ -53,4 +54,12 @@ ul {
 a {
   text-decoration: none;
   color: unset;
+}
+
+img {
+  width: 100%;
+}
+
+section {
+  padding: 60px 0;
 }
