@@ -5,6 +5,7 @@ import HomePageTrendingSection from "./HomePageTrendingSection";
 import HomePageBestSalesSection from "./HomePageBestSalesSection";
 import HomePageCountSection from "./HomePageCountSection";
 import HomePageNewArrivalsSection from "./HomePageNewArrivalsSection";
+import HomePagePopularCategorySection from "./HomePagePopularCategorySection";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <HomePageBestSalesSection />
       <HomePageCountSection />
       <HomePageNewArrivalsSection />
+      <HomePagePopularCategorySection />
     </Helmet>
   );
 };

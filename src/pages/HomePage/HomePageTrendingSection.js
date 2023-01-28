@@ -20,7 +20,7 @@ const HomePageTrendingSection = () => {
       <section className="pt-2">
         <Container>
           <Row>
-            <Col lg="12" className="text-center">
+            <Col lg="12" className="text-center mb-5">
               <h2 className="text-primary_color font-semibold">
                 Trending Products
               </h2>
