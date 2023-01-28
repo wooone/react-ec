@@ -1,4 +1,3 @@
-// import productImg from "../../assets/images/arm-chair-01.jpg";
 import { Col } from "reactstrap";
 import { ImageStyled, AddIconSpanStyled } from "./ProductCard.style";
 
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ item }) => {
   return (
     <>
-      <Col lg="3" md="4">
+      <Col lg="3" md="4" className="mb-2">
         <div className="px-2 cursor-pointer">
           <div>
             <ImageStyled
@@ -19,7 +18,7 @@ const ProductCard = ({ item }) => {
 
           <div className="py-2">
             <h3 className="text-md text-primary_color font-semibold mt-[15px]">
-              <Link className="hover:text-gray-700" to="/shop/id">
+              <Link className="hover:text-gray-700" to={`/shop/${item.id}`}>
                 {item.productName}
               </Link>
             </h3>
@@ -28,7 +27,7 @@ const ProductCard = ({ item }) => {
 
           <div className="d-flex items-start justify-between">
             <span className="text-primary_color text-md font-medium ">
-              {item.price}
+              NT$ {item.price}
             </span>
             <AddIconSpanStyled whileTap={{ scale: 1.2 }}>
               <i className="ri-add-line text-md p-[5px] bg-gray-800 text-white rounded-full hover:bg-gray-700"></i>

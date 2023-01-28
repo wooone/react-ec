@@ -5,14 +5,14 @@ import ProductsList from "../../components/product/ProductsList";
 import products from "../../constants/data/products";
 
 const HomePageTrendingSection = () => {
-  const [data, setData] = useState(products);
+  const [trendingProducts, setTrendingProducts] = useState([]);
 
   useEffect(() => {
-    const filteredProducts = products.filter(
+    const filteredTrendingProducts = products.filter(
       (item) => item.category === "chair"
     );
 
-    setData(filteredProducts);
+    setTrendingProducts(filteredTrendingProducts);
   }, []);
 
   return (
@@ -25,7 +25,7 @@ const HomePageTrendingSection = () => {
                 Trending Products
               </h2>
             </Col>
-            <ProductsList data={data} />
+            <ProductsList data={trendingProducts} />
           </Row>
         </Container>
       </section>
