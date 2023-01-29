@@ -22,3 +22,15 @@ export const UserIconImage = styled(motion.img)`
 export const SpanIconStyled = styled.span`
   position: relative;
 `;
+
+export const StickyHeader = styled.div`
+  background-color: #edf4ff;
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 3px 3px 8px -3px #d6d6d6;
+`;
