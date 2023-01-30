@@ -7,5 +7,5 @@ export const ButtonStyled = styled(motion.button)`
   border-radius: 5px;
   padding: 10px 20px;
   font-weight: 600;
-  margin-top: 35px
+  margin-top: 35px;
 `;

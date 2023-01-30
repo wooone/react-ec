@@ -4,7 +4,7 @@ import TimerCount from "../../components/timerCount/TimerCount";
 const HomePageCountSection = () => {
   return (
     <>
-      <section className="bg-slate-700 h-[300px]">
+      <section className="bg-slate-800 h-[300px]">
         <Container>
           <Row>
             <TimerCount />

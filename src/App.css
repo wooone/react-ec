@@ -63,3 +63,7 @@ img {
 section {
   padding: 60px 0;
 }
+
+.active__header {
+  display: block !important
+}

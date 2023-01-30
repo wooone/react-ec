@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/eco-logo.png";
 import { Container, Row } from "reactstrap";
@@ -9,6 +9,8 @@ import {
   UserIconImage,
   SpanIconStyled,
   StickyHeader,
+  Menu,
+  NavigationStyled,
 } from "./Header.style";
 
 const navLinks = [
@@ -29,6 +31,8 @@ const navLinks = [
 const Header = () => {
   const [headerType, setHeaderType] = useState("HeaderStyled");
 
+  const menuRef = useRef(null);
+
   const handleScroll = () => {
     if (
       document.body.scrollTop > 80 ||
@@ -47,6 +51,8 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const menuToggle = () => menuRef.current.classList.toggle("active__header");
 
   return (
     <>
@@ -69,10 +75,13 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="navigation">
-                  <ul className="hidden md:flex md:items-center md:gap-x-[2.7rem] md:mb-0">
+                <NavigationStyled ref={menuRef} onClick={menuToggle}>
+                  <Menu>
                     {navLinks.map((item, index) => (
-                      <li className="nav__item" key={index}>
+                      <li
+                        className="flex justify-center items-center"
+                        key={index}
+                      >
                         <NavLink
                           to={item.path}
                           className={(navClass) =>
@@ -85,8 +94,8 @@ const Header = () => {
                         </NavLink>
                       </li>
                     ))}
-                  </ul>
-                </div>
+                  </Menu>
+                </NavigationStyled>
 
                 <div className="d-flex items-center gap-x-[1.7rem]">
                   <SpanIconStyled>
@@ -113,7 +122,7 @@ const Header = () => {
                 </div>
 
                 <div className="text-xl text-primary_color md:hidden">
-                  <span>
+                  <span onClick={menuToggle}>
                     <i className="ri-menu-line"></i>
                   </span>
                 </div>
@@ -140,10 +149,13 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="fixed top-0 left-0 w-full h-full bg-slate-400 bg-opacity-50 z-30 md:static md:w-auto md:h-auto md:bg-transparent">
-                  <ul className="hidden md:flex md:items-center md:gap-x-[2.7rem] md:mb-0">
+                <NavigationStyled ref={menuRef} onClick={menuToggle}>
+                  <Menu>
                     {navLinks.map((item, index) => (
-                      <li className="nav__item" key={index}>
+                      <li
+                        className="flex justify-center items-center"
+                        key={index}
+                      >
                         <NavLink
                           to={item.path}
                           className={(navClass) =>
@@ -156,8 +168,8 @@ const Header = () => {
                         </NavLink>
                       </li>
                     ))}
-                  </ul>
-                </div>
+                  </Menu>
+                </NavigationStyled>
 
                 <div className="d-flex items-center gap-x-[1.7rem]">
                   <SpanIconStyled>
@@ -184,7 +196,7 @@ const Header = () => {
                 </div>
 
                 <div className="text-xl text-primary_color md:hidden">
-                  <span>
+                  <span onClick={menuToggle}>
                     <i className="ri-menu-line"></i>
                   </span>
                 </div>

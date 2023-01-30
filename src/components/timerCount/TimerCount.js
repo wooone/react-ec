@@ -8,12 +8,12 @@ import Clock from "./Clock";
 const TimerCount = () => {
   return (
     <>
-      <Col lg="6" md="6">
+      <Col lg="6" md="6" className="text-center md:text-left">
         <div className="">
-          <h4 className="text-white font-semibold mb-2 text-sm">
+          <h4 className="text-white font-semibold mb-2 text-sm text-center md:text-left">
             Limited Offers
           </h4>
-          <h3 className="text-white font-medium text-lg mb-3">
+          <h3 className="text-white font-medium text-lg mb-3 text-center md:text-left">
             Quality Armchair
           </h3>
         </div>
@@ -25,7 +25,7 @@ const TimerCount = () => {
         </ButtonStyled>
       </Col>
 
-      <Col lg="6" md="6" className="text-end">
+      <Col lg="6" md="6" className="text-end hidden md:block">
         <img
           className="w-[70%] h-[70%] object-contain"
           src={counterImg}

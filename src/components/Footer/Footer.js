@@ -10,8 +10,8 @@ const Footer = () => {
     <FooterStyled>
       <Container>
         <Row>
-          <Col lg="4">
-            <div className="d-flex items-center gap-x-[8px]">
+          <Col lg="4" md="6">
+            <div className="d-flex items-center gap-x-[8px] mb-4">
               <div>
                 <h1 className="text-lg font-semibold text-white whitespace-nowrap">
                   雞皮購物
@@ -24,7 +24,7 @@ const Footer = () => {
               consequat est dolore.
             </p>
           </Col>
-          <Col lg="3">
+          <Col lg="3" md='3'>
             <div>
               <h4 className="mb-3 font-semibold text-white">熱銷類別</h4>
               <ListGroup className="mb-3 ">
@@ -43,7 +43,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg="2">
+          <Col lg="2" md="3">
             <div>
               <h4 className="mb-3 font-semibold text-white">相關連結</h4>
               <ListGroup className="mb-3">
@@ -62,7 +62,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg="3">
+          <Col lg="3" md="4">
             <div>
               <h4 className="mb-3 font- text-white">聯絡我們</h4>
               <ListGroup className="mb-3">

@@ -41,10 +41,10 @@ const Clock = () => {
 
   return (
     <>
-      <div className="d-flex items-center gap-3">
+      <div className="d-flex items-center gap-3 justify-center md:justify-start">
         <div className="d-flex items-center gap-3">
           <div className="text-center">
-            <h1 className="text-white text-md mb-1">{days}</h1>
+            <h1 className="text-white text-xl md:text-3xl mb-1">{days}</h1>
             <h5 className="text-white text-sm">Days</h5>
           </div>
           <span className="text-white text-lg">:</span>
@@ -52,7 +52,7 @@ const Clock = () => {
 
         <div className="d-flex items-center gap-3">
           <div className="text-center">
-            <h1 className="text-white text-md mb-1">{hours}</h1>
+            <h1 className="text-white text-xl md:text-3xl mb-1">{hours}</h1>
             <h5 className="text-white text-sm">Hours</h5>
           </div>
           <span className="text-white text-lg">:</span>
@@ -60,7 +60,7 @@ const Clock = () => {
 
         <div className="d-flex items-center gap-3">
           <div className="text-center">
-            <h1 className="text-white text-md mb-1">{minutes}</h1>
+            <h1 className="text-white text-xl md:text-3xl mb-1">{minutes}</h1>
             <h5 className="text-white text-sm">Minutes</h5>
           </div>
           <span className="text-white text-lg">:</span>
@@ -68,7 +68,7 @@ const Clock = () => {
 
         <div className="d-flex items-center gap-3">
           <div className="text-center">
-            <h1 className="text-white text-md mb-1">{seconds}</h1>
+            <h1 className="text-white text-xl md:text-3xl mb-1">{seconds}</h1>
             <h5 className="text-white text-sm">Seconds</h5>
           </div>
         </div>

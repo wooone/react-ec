@@ -16,7 +16,7 @@ const HomePageHeroSection = () => {
                 <p className="text-primary_color leading-7 font-semibold">
                   Trending product in {year}
                 </p>
-                <h2 className="text-primary_color tetx-[2.5rem] font-semibold my-[20px]">
+                <h2 className="text-primary_color text-[1.8rem] md:text-[2.5rem] font-semibold my-[20px] md:leading-12">
                   Make your Interior More Minimalistic & Modern
                 </h2>
                 <p className="text-primary_color leading-7">
