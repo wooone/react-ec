@@ -13,6 +13,8 @@ import {
   NavigationStyled,
 } from "./Header.style";
 
+import { useSelector } from "react-redux";
+
 const navLinks = [
   {
     path: "home",
@@ -32,6 +34,8 @@ const Header = () => {
   const [headerType, setHeaderType] = useState("HeaderStyled");
 
   const menuRef = useRef(null);
+
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const handleScroll = () => {
     if (
@@ -108,7 +112,7 @@ const Header = () => {
                   <SpanIconStyled>
                     <IconsStyled className="ri-shopping-bag-line"></IconsStyled>
                     <span className="absolute top-[50%] right-[-70%] content-[''] bg-primary_color text-white rounded-full text-xs font-semibold px-1.5">
-                      1
+                      {totalQuantity}
                     </span>
                   </SpanIconStyled>
 
@@ -182,7 +186,7 @@ const Header = () => {
                   <SpanIconStyled>
                     <IconsStyled className="ri-shopping-bag-line"></IconsStyled>
                     <span className="absolute top-[50%] right-[-70%] content-[''] bg-primary_color text-white rounded-full text-xs font-semibold px-1.5">
-                      1
+                      {totalQuantity}
                     </span>
                   </SpanIconStyled>
 

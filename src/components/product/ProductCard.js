@@ -2,8 +2,26 @@ import { Col } from "reactstrap";
 import { ImageStyled, AddIconSpanStyled } from "./ProductCard.style";
 
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux/slices/cartSlice";
 
 const ProductCard = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(
+      cartActions.addItem({
+        id: item.id,
+        productName: item.productName,
+        price: item.price,
+        image: item.imgUrl,
+      })
+    );
+
+    toast.success("成功加入購物車");
+  };
   return (
     <>
       <Col lg="3" md="4" className="mb-2">
@@ -29,7 +47,7 @@ const ProductCard = ({ item }) => {
             <span className="text-primary_color text-md font-medium ">
               NT$ {item.price}
             </span>
-            <AddIconSpanStyled whileTap={{ scale: 1.2 }}>
+            <AddIconSpanStyled whileTap={{ scale: 1.2 }} onClick={addToCart}>
               <i className="ri-add-line text-md p-[5px] bg-gray-800 text-white rounded-full hover:bg-gray-700"></i>
             </AddIconSpanStyled>
           </div>
