@@ -35,7 +35,7 @@ const ProductCard = ({ item }) => {
           </div>
 
           <div className="py-2">
-            <h3 className="text-md text-primary_color font-semibold mt-[15px]">
+            <h3 className="text-base text-primary_color font-semibold mt-[15px]">
               <Link className="hover:text-gray-700" to={`/shop/${item.id}`}>
                 {item.productName}
               </Link>
@@ -44,11 +44,11 @@ const ProductCard = ({ item }) => {
           </div>
 
           <div className="d-flex items-start justify-between">
-            <span className="text-primary_color text-md font-medium ">
+            <span className="text-primary_color text-base font-medium ">
               NT$ {item.price}
             </span>
             <AddIconSpanStyled whileTap={{ scale: 1.2 }} onClick={addToCart}>
-              <i className="ri-add-line text-md p-[5px] bg-gray-800 text-white rounded-full hover:bg-gray-700"></i>
+              <i className="ri-add-line text-base p-[5px] bg-gray-800 text-white rounded-full hover:bg-gray-700"></i>
             </AddIconSpanStyled>
           </div>
         </div>

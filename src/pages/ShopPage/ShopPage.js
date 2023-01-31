@@ -59,11 +59,18 @@ const ShopPage = () => {
       );
 
       setProductsData(filteredProducts);
+    } else {
     }
+  };
 
-    else {
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
 
-    }
+    const searchProducts = products.filter((item) =>
+      item.productName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setProductsData(searchProducts);
   };
   return (
     <>
@@ -96,7 +103,11 @@ const ShopPage = () => {
               </Col>
               <Col lg="6" md="6">
                 <SearchBox>
-                  <InputStyled type="text" placeholder="Search..." />
+                  <InputStyled
+                    type="text"
+                    placeholder="Search..."
+                    onChange={handleSearch}
+                  />
                   <span>
                     <i class="ri-search-line"></i>
                   </span>
@@ -110,7 +121,7 @@ const ShopPage = () => {
           <Container>
             <Row>
               {productsData.length === 0 ? (
-                <h1>沒有符合的商品</h1>
+                <h1 className="text-2xl">沒有符合的商品</h1>
               ) : (
                 <ProductLists data={productsData} />
               )}
