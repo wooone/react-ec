@@ -16,6 +16,8 @@ export const IconsStyled = styled.i`
 export const UserIconImage = styled(motion.img)`
   width: 28px;
   height: 28px;
+  object-fit: cover;
+  border-radius: 999px;
   cursor: pointer;
 `;
 

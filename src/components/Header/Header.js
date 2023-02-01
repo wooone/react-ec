@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/eco-logo.png";
 import { Container, Row } from "reactstrap";
 import userIcon from "../../assets/images/user-icon.png";
@@ -14,6 +14,10 @@ import {
 } from "./Header.style";
 
 import { useSelector } from "react-redux";
+import useAuth from "../../custom-hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
+import { toast } from "react-toastify";
 
 const navLinks = [
   {
@@ -35,8 +39,19 @@ const Header = () => {
 
   const menuRef = useRef(null);
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
+  const [profileAction, setProfileAction] = useState(false);
+
+  const handleClick = () => {
+    if (profileAction === true) {
+      setProfileAction(false);
+    } else {
+      setProfileAction(true);
+    }
+  };
 
   const handleScroll = () => {
     if (
@@ -47,6 +62,18 @@ const Header = () => {
     } else {
       setHeaderType("HeaderStyled");
     }
+  };
+
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("成功登出");
+        setProfileAction(false);
+        navigate("/home");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   useEffect(() => {
@@ -121,13 +148,26 @@ const Header = () => {
                     </span>
                   </SpanIconStyled>
 
-                  <span>
+                  <div className="relative z-10">
                     <UserIconImage
                       whileTap={{ scale: 1.2 }}
-                      src={userIcon}
+                      src={currentUser ? currentUser.photoURL : userIcon}
                       alt="userIcon"
+                      onClick={handleClick}
                     />
-                  </span>
+                    {profileAction ? (
+                      <div className="absolute top-[150%] left-[-10%] w-[100px] z-20 py-[8px] pl-3 items-center flex-col bg-blue-100 leading-8 cursor-pointer">
+                        {currentUser ? (
+                          <span onClick={logout}>Logout</span>
+                        ) : (
+                          <div className="d-flex flex-col">
+                            <Link to="/signup">Signup</Link>
+                            <Link to="/login">Login</Link>
+                          </div>
+                        )}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div className="text-xl text-primary_color md:hidden">
