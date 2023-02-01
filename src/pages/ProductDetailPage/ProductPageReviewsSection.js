@@ -2,7 +2,13 @@ import React from "react";
 import { PrimaryButton } from "../../components/button/PrimaryButton";
 import { InputStyled, SpanStyled, TextAreaStyled } from "./ProductDetail.style";
 
-const ProductPageReviewsSection = ({ reviews, setRating, submitHandler, reviewUser, reviewMsg }) => {
+const ProductPageReviewsSection = ({
+  reviews,
+  setRating,
+  submitHandler,
+  reviewUser,
+  reviewMsg,
+}) => {
   return (
     <div className="mt-5">
       <div className="">
@@ -24,23 +30,43 @@ const ProductPageReviewsSection = ({ reviews, setRating, submitHandler, reviewUs
           </h4>
           <form action="" onSubmit={submitHandler}>
             <div className="mb-[30px]">
-              <InputStyled type="text" placeholder="Enter name" ref={reviewUser} />
+              <InputStyled
+                type="text"
+                placeholder="Enter name"
+                ref={reviewUser}
+                required
+              />
             </div>
 
             <div className="mb-[30px] d-flex items-center gap-5">
-              <SpanStyled onClick={() => setRating(1)}>
+              <SpanStyled
+                whileTap={{ scale: 1.2 }}
+                onClick={() => setRating(1)}
+              >
                 1 <i className="ri-star-s-fill"></i>
               </SpanStyled>
-              <SpanStyled onClick={() => setRating(2)}>
+              <SpanStyled
+                whileTap={{ scale: 1.2 }}
+                onClick={() => setRating(2)}
+              >
                 2 <i className="ri-star-s-fill"></i>
               </SpanStyled>
-              <SpanStyled onClick={() => setRating(3)}>
+              <SpanStyled
+                whileTap={{ scale: 1.2 }}
+                onClick={() => setRating(3)}
+              >
                 3 <i className="ri-star-s-fill"></i>
               </SpanStyled>
-              <SpanStyled onClick={() => setRating(4)}>
+              <SpanStyled
+                whileTap={{ scale: 1.2 }}
+                onClick={() => setRating(4)}
+              >
                 4 <i className="ri-star-s-fill"></i>
               </SpanStyled>
-              <SpanStyled onClick={() => setRating(5)}>
+              <SpanStyled
+                whileTap={{ scale: 1.2 }}
+                onClick={() => setRating(5)}
+              >
                 5 <i className="ri-star-s-fill"></i>
               </SpanStyled>
             </div>
@@ -51,6 +77,7 @@ const ProductPageReviewsSection = ({ reviews, setRating, submitHandler, reviewUs
                 type="text"
                 placeholder="Review Messages"
                 ref={reviewMsg}
+                required
               />
             </div>
 

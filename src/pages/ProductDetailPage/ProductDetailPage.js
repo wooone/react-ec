@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -11,21 +10,18 @@ import Common from "../../common/Common";
 import products from "../../constants/data/products.js";
 import ProductsList from "../../components/product/ProductsList";
 
-// import { PrimaryButton } from "../../components/button/PrimaryButton";
-
 import ProductPageInfoSection from "./ProductPageInfoSection.js";
 import ProductPageReviewsSection from "./ProductPageReviewsSection";
 import { cartActions } from "../../redux/slices/cartSlice";
-
+import { toast } from "react-toastify";
 
 const ProductDetailPage = () => {
   const [tab, setTab] = useState("desc");
 
-  const reviewUser = useRef('');
-  const reviewMsg = useRef('');
+  const reviewUser = useRef("");
+  const reviewMsg = useRef("");
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const [rating, setRating] = useState(null);
   const { id } = useParams();
@@ -45,20 +41,37 @@ const ProductDetailPage = () => {
   const relatedProducts = products.filter((item) => item.category === category);
 
   const submitHandler = (e) => {
-    e.prevenDefault();
+    e.preventDefault();
 
     const reviewUserName = reviewUser.current.value;
     const reviewUserMsg = reviewMsg.current.value;
-  }
+
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating,
+    };
+
+    console.log(reviewObj);
+    toast.success('評論送出！')
+  };
 
   const addToCart = () => {
-    dispatch(cartActions.addItem({
-      id,
-      image: imgUrl,
-      productName,
-      price,
-    }))
-  }
+    dispatch(
+      cartActions.addItem({
+        id,
+        image: imgUrl,
+        productName,
+        price,
+      })
+    );
+
+    toast.success("成功加入購物車");
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
 
   return (
     <>

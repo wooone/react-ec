@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
 export const RatingIcon = styled.i`
@@ -23,7 +24,7 @@ export const TextAreaStyled = styled.textarea`
   ${TextStyled}
 `;
 
-export const SpanStyled = styled.span`
+export const SpanStyled = styled(motion.span)`
   display: flex;
   align-items: center;
   column-gap: 5px;

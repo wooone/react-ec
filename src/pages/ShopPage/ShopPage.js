@@ -80,10 +80,10 @@ const ShopPage = () => {
         <section>
           <Container>
             <Row>
-              <Col lg="3" md="3">
-                <div>
+              <Col lg="3" md="6">
+                <div className="mb-[30px] lg:mb-0">
                   <SelectStyled onChange={handleFilter}>
-                    <OptionStyled>filter By Category</OptionStyled>
+                    <OptionStyled >filter By Category</OptionStyled>
                     <OptionStyled value="sofa">Sofa</OptionStyled>
                     <OptionStyled value="mobile">Mobile</OptionStyled>
                     <OptionStyled value="chair">Chair</OptionStyled>
@@ -92,7 +92,7 @@ const ShopPage = () => {
                   </SelectStyled>
                 </div>
               </Col>
-              <Col lg="3" md="3">
+              <Col lg="3" md="6" className="text-end">
                 <div>
                   <SelectStyled>
                     <OptionStyled>Sort By Category</OptionStyled>
@@ -101,7 +101,7 @@ const ShopPage = () => {
                   </SelectStyled>
                 </div>
               </Col>
-              <Col lg="6" md="6">
+              <Col lg="6" md="12">
                 <SearchBox>
                   <InputStyled
                     type="text"
