@@ -9,6 +9,7 @@ const ProductPageInfoSection = ({
   price,
   shortDesc,
   category,
+  addToCart,
 }) => {
   return (
     <section>
@@ -59,6 +60,7 @@ const ProductPageInfoSection = ({
                   <i className="ri-shopping-bag-line pr-2"></i>,
                   "加入購物車",
                 ]}
+                addToCart={addToCart}
               />
             </div>
           </Col>

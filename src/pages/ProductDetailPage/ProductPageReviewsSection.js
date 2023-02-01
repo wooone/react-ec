@@ -2,7 +2,7 @@ import React from "react";
 import { PrimaryButton } from "../../components/button/PrimaryButton";
 import { InputStyled, SpanStyled, TextAreaStyled } from "./ProductDetail.style";
 
-const ProductPageReviewsSection = ({ reviews, setRating }) => {
+const ProductPageReviewsSection = ({ reviews, setRating, submitHandler, reviewUser, reviewMsg }) => {
   return (
     <div className="mt-5">
       <div className="">
@@ -22,9 +22,9 @@ const ProductPageReviewsSection = ({ reviews, setRating }) => {
           <h4 className="text-[1.2rem] font-semibold mb-[30px]">
             留下你的評價
           </h4>
-          <form action="">
+          <form action="" onSubmit={submitHandler}>
             <div className="mb-[30px]">
-              <InputStyled type="text" placeholder="Enter name" />
+              <InputStyled type="text" placeholder="Enter name" ref={reviewUser} />
             </div>
 
             <div className="mb-[30px] d-flex items-center gap-5">
@@ -50,6 +50,7 @@ const ProductPageReviewsSection = ({ reviews, setRating }) => {
                 rows={4}
                 type="text"
                 placeholder="Review Messages"
+                ref={reviewMsg}
               />
             </div>
 

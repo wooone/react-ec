@@ -1,21 +1,33 @@
+import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+
 import { Container, Row, Col } from "reactstrap";
-import products from "../../constants/data/products.js";
+
 import Helmet from "../../components/helmet/Helmet";
 import Common from "../../common/Common";
 
-import { PrimaryButton } from "../../components/button/PrimaryButton";
+import products from "../../constants/data/products.js";
+import ProductsList from "../../components/product/ProductsList";
+
+// import { PrimaryButton } from "../../components/button/PrimaryButton";
 
 import ProductPageInfoSection from "./ProductPageInfoSection.js";
-import { useState } from "react";
-import { InputStyled, TextAreaStyled, SpanStyled } from "./ProductDetail.style";
 import ProductPageReviewsSection from "./ProductPageReviewsSection";
-import ProductsList from "../../components/product/ProductsList";
+import { cartActions } from "../../redux/slices/cartSlice";
+
 
 const ProductDetailPage = () => {
   const [tab, setTab] = useState("desc");
-  const [rating, setRating] = useState(null);
 
+  const reviewUser = useRef('');
+  const reviewMsg = useRef('');
+
+  const dispatch = useDispatch()
+
+
+  const [rating, setRating] = useState(null);
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
 
@@ -32,6 +44,22 @@ const ProductDetailPage = () => {
 
   const relatedProducts = products.filter((item) => item.category === category);
 
+  const submitHandler = (e) => {
+    e.prevenDefault();
+
+    const reviewUserName = reviewUser.current.value;
+    const reviewUserMsg = reviewMsg.current.value;
+  }
+
+  const addToCart = () => {
+    dispatch(cartActions.addItem({
+      id,
+      image: imgUrl,
+      productName,
+      price,
+    }))
+  }
+
   return (
     <>
       <Helmet title={productName} />
@@ -44,6 +72,7 @@ const ProductDetailPage = () => {
         price={price}
         category={category}
         shortDesc={shortDesc}
+        addToCart={addToCart}
       />
 
       <section>
@@ -73,6 +102,9 @@ const ProductDetailPage = () => {
                 <ProductPageReviewsSection
                   reviews={reviews}
                   setRating={setRating}
+                  submitHandler={submitHandler}
+                  reviewUser={reviewUser}
+                  reviewMsg={reviewMsg}
                 />
               )}
             </Col>
