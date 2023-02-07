@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const ServiceItemStyled = styled(motion.div)`
   padding: 20px;
-  background-color: ${(props) => props.bgCardColor || "#fdefe6"};
+  background-color: ${(props) => props.bgcardcolor || "#fdefe6"};
   display: flex;
   align-items: center;
   column-gap: 0.7rem;

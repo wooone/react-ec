@@ -58,7 +58,7 @@ const AdminNav = () => {
                 </RightSpan>
                 <img
                   className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
-                  src={currentUser.photoURL}
+                  src={currentUser && currentUser.photoURL}
                   alt=""
                 />
               </div>

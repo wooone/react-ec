@@ -156,7 +156,7 @@ const Header = () => {
                       onClick={handleClick}
                     />
                     {profileAction ? (
-                      <div className="absolute top-[150%] left-[-10%] w-[100px] z-20 py-[8px] pl-3 items-center flex-col bg-blue-100 leading-8 cursor-pointer">
+                      <div className="absolute top-[150%] left-[-10%] w-[100px] z-20 py-[8px] pl-3 items-center flex-col bg-card_bg_01 leading-8 cursor-pointer">
                         {currentUser ? (
                           <span onClick={logout}>Logout</span>
                         ) : (

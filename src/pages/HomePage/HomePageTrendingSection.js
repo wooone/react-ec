@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ProductsList from "../../components/product/ProductsList";
 
-import products from "../../constants/data/products";
+import useGetData from "../../custom-hooks/useGetData";
 
 const HomePageTrendingSection = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
+
+  const { data: products, loading } = useGetData("products");
 
   useEffect(() => {
     const filteredTrendingProducts = products.filter(
@@ -13,7 +15,7 @@ const HomePageTrendingSection = () => {
     );
 
     setTrendingProducts(filteredTrendingProducts);
-  }, []);
+  }, [products]);
 
   return (
     <>
@@ -25,7 +27,11 @@ const HomePageTrendingSection = () => {
                 Trending Products
               </h2>
             </Col>
-            <ProductsList data={trendingProducts} />
+            {loading ? (
+              <h5>Loading....</h5>
+            ) : (
+              <ProductsList data={trendingProducts} />
+            )}
           </Row>
         </Container>
       </section>

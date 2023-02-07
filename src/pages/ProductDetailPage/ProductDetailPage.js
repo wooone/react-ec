@@ -7,7 +7,6 @@ import { Container, Row, Col } from "reactstrap";
 import Helmet from "../../components/helmet/Helmet";
 import Common from "../../common/Common";
 
-import products from "../../constants/data/products.js";
 import ProductsList from "../../components/product/ProductsList";
 
 import ProductPageInfoSection from "./ProductPageInfoSection.js";
@@ -15,7 +14,12 @@ import ProductPageReviewsSection from "./ProductPageReviewsSection";
 import { cartActions } from "../../redux/slices/cartSlice";
 import { toast } from "react-toastify";
 
+import { db } from "../../firebase.config";
+import { doc, getDoc } from "firebase/firestore";
+import useGetData from "../../custom-hooks/useGetData";
+
 const ProductDetailPage = () => {
+  const [product, setProduct] = useState({});
   const [tab, setTab] = useState("desc");
 
   const reviewUser = useRef("");
@@ -25,14 +29,32 @@ const ProductDetailPage = () => {
 
   const [rating, setRating] = useState(null);
   const { id } = useParams();
-  const product = products.find((item) => item.id === id);
+  // const product = products.find((item) => item.id === id);
+
+  const {data: products} = useGetData('products')
+
+  const docRef = doc(db, "products", id);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setProduct(docSnap.data());
+      } else {
+        console.log("no product!");
+      }
+    };
+
+    getProduct()
+  }, []);
 
   const {
     imgUrl,
     productName,
     price,
-    avgRating,
-    reviews,
+    // avgRating,
+    // reviews,
     description,
     shortDesc,
     category,
@@ -53,7 +75,7 @@ const ProductDetailPage = () => {
     };
 
     console.log(reviewObj);
-    toast.success('評論送出！')
+    toast.success("評論送出！");
   };
 
   const addToCart = () => {
@@ -81,7 +103,7 @@ const ProductDetailPage = () => {
       <ProductPageInfoSection
         imgUrl={imgUrl}
         productName={productName}
-        avgRating={avgRating}
+        // avgRating={avgRating}
         price={price}
         category={category}
         shortDesc={shortDesc}
@@ -99,12 +121,12 @@ const ProductDetailPage = () => {
                 >
                   商品描述
                 </h6>
-                <h6
+                {/* <h6
                   className={`${tab === "rev" ? "active" : ""}`}
                   onClick={() => setTab("rev")}
                 >
                   評論 ({reviews.length})
-                </h6>
+                </h6> */}
               </div>
 
               {tab === "desc" ? (
@@ -113,7 +135,7 @@ const ProductDetailPage = () => {
                 </div>
               ) : (
                 <ProductPageReviewsSection
-                  reviews={reviews}
+                  // reviews={reviews}
                   setRating={setRating}
                   submitHandler={submitHandler}
                   reviewUser={reviewUser}

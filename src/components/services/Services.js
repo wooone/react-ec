@@ -5,7 +5,7 @@ const Services = ({ icon, title, subtitle, bg }) => {
   return (
     <>
       <Col lg="3" md="4" className="my-2">
-        <ServiceItemStyled bgCardColor={bg} whileHover={{ scale: 1.05 }}>
+        <ServiceItemStyled bgcardcolor={bg} whileHover={{ scale: 1.05 }}>
           <span>
             <IStyled className={icon}></IStyled>
           </span>

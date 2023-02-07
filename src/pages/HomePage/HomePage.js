@@ -8,6 +8,7 @@ import HomePageNewArrivalsSection from "./HomePageNewArrivalsSection";
 import HomePagePopularCategorySection from "./HomePagePopularCategorySection";
 
 const HomePage = () => {
+  
   return (
     <Helmet title={"首頁"}>
       <HomePageHeroSection />
