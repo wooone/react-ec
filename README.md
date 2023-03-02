@@ -21,7 +21,7 @@ UI設計以及商品圖片來源: [codingwithmuhib/Maltimart-ecommerce](https://
 2. 進入專案目錄：
 `cd react-ec`
 3. 安裝相依套件：
-`cnpm install`
+`npm install`
 4. 啟動專案：
 `npm start`
 
